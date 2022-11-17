@@ -10,16 +10,14 @@ script:
   - docker run -e CI=true sakmalh/react-test npm test
 
 after-success: 
-  - docker build -t sakmalh/multi-nginx ./nginx
-  - docker build -t sakmalh/multi-client ./client
-  - docker build -t sakmalh/multi-worker ./worker
-  - docker build -t sakmalh/multi-server ./server
+  - docker build -t shakmalh/multi-nginx ./nginx
+  - docker build -t shakmalh/multi-client ./client
+  - docker build -t shakmalh/multi-worker ./worker
+  - docker build -t shakmalh/multi-server ./server
   
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker login
-  - docker tag sakmalh/multi-nginx shakmalh/multi-docker
-  - docker tag sakmalh/multi-client shakmalh/multi-docker
-  - docker tag sakmalh/multi-worker shakmalh/multi-docker
-  - docker tag sakmalh/multi-server shakmalh/multi-docker
-  - docker push shakmalh/multi-docker
+  - docker push shakmalh/multi-nginx
+  - docker push shakmalh/multi-client
+  - docker push shakmalh/multi-worker
+  - docker push shakmalh/multi-server
