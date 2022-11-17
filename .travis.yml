@@ -18,7 +18,8 @@ after-success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker login
-  - docker push sakmalh/multi-nginx
-  - docker push sakmalh/multi-client
-  - docker push sakmalh/multi-worker
-  - docker push sakmalh/multi-server
+  - docker tag sakmalh/multi-nginx shakmalh/multi-docker
+  - docker tag sakmalh/multi-client shakmalh/multi-docker
+  - docker tag sakmalh/multi-worker shakmalh/multi-docker
+  - docker tag sakmalh/multi-server shakmalh/multi-docker
+  - docker push shakmalh/multi-docker
