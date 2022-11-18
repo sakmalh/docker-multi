@@ -21,3 +21,16 @@ after-success:
   - docker push shakmalh/multi-client
   - docker push shakmalh/multi-worker
   - docker push shakmalh/multi-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "multi-docker"
+  env: "Multidocker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-041718486392"
+  bucket_path: "docker-multi"
+  on:
+    branch: master 
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+  skip_cleanup: true
